@@ -13,11 +13,5 @@ module.exports = [
                 component:() => import('./routers/demo/demo'),
             }
         ]
-    },
-    {
-        name: '示例',
-        path: '/demo/demo',
-        model: [],
-        // component:() => require('./routers/demo/demo'),
     }
 ]

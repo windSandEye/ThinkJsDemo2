@@ -12,8 +12,6 @@ const app = dva({
   history: browserHistory()
 });
 
-//注册全局状态
-// app.model(require('./models/global'));
 
 //路由注册
 app.router(routers);
