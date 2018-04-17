@@ -9,13 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/app.js"
+            "program": "${workspaceRoot}/development.js"
         },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "node Program",
-            "program": "${workspaceFolder}/development.js"
-        }
     ]
 }

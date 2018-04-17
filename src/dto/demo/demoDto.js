@@ -1,12 +1,14 @@
 import commonDto from '../common/commonDto';
 
+const demoInit = {
+    id:null,
+    title:null,
+    content:null
+}
+
 export default class CreateDemoDto {
     constructor(demoEntity) {
-        let obj ={
-            id:null,
-            title:null,
-            content:null
-        };
+        let obj ={...demoInit};
         if(demoEntity.hasOwnProperty("id")){
             obj.id = commonDto.convertToType(demoEntity.id,"Integer");
         }

@@ -6,8 +6,7 @@ export default class extends Base {
     //列表
     async indexAction() {
         let data = await this.model('demo').select();
-        return this.success(data);
-        // return this.display();
+        return this.json(data);
     }
 
     //添加
@@ -21,9 +20,9 @@ export default class extends Base {
     //删除
     async deleteDemoAction() {
         const param = this.ctx.post();
-        let deleteRow = await this.model('demo').where({id: ['=', param.id]}).delete();
-        let error = {code:1,message:"删除失败"}
-        if(deleteRow>0){
+        let deleteRow = await this.model('demo').where({ id: ['=', param.id] }).delete();
+        let error = { code: 1, message: "删除失败" }
+        if (deleteRow > 0) {
             error.code = 0;
             error.message = "删除成功";
         }
