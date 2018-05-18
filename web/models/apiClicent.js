@@ -1,18 +1,45 @@
+/**
+ * @Author: yuanshubing 
+ * @Date: 2018-05-16 09:20:14 
+ */
 import { polyfill } from 'es6-promise';
 import fetch from 'isomorphic-fetch';
 
-
-export function sendQequest({ url, method, body, headers }) {
+/*
+  url:<String>请求路径，必须
+  method:GET、PUT、POST、DELETE，请求方式，必须
+  body:<Object>请求参数，可选
+  headers:<Array>请求头设置，可选
+*/
+export function sendQequest({ url, method, body, headers, queryParams }) {
+  //拼接主机地址
   let basePath = location.protocol + "//" + location.host;
+  //拼接请求路径
   url = basePath + url;
-  let bodyParam = body;
 
+  // 为get请求添加时间戳，避免图片之内的不做二次响应                             
+  if (method === 'GET') {
+    queryParams._t = new Date().getTime();
+  }
+
+  // 封装get请求的路径
+  url += (url.indexOf('?') === -1 ? '?' : '&') +
+    buildUrlParams(normalizeParams(queryParams));
+
+  let bodyParam = body;
+  //请求头设置
   if (headers) {
     if (headers.indexOf('application/x-www-form-urlencoded') > -1 || headers.indexOf('multipart/form-data') > -1) {
-      bodyParam = this.buildFormParams(this.normalizeParams(body));
+      bodyParam = buildFormParams(normalizeParams(body));
     }
   } else {
-    bodyParam = body ? JSON.stringify(body) : null;
+    function replacer(key, value) {//替换null为undefined的目地是：JSON解析的时候会忽略掉undefined的属性，而null会转换为'null'字符串
+      if (value === null) {
+        return undefined;
+      }
+      return value;
+    }
+    bodyParam = body ? JSON.stringify(body, replacer) : null;
   }
   //请求头封装
   headers = fullHeaders(headers);
@@ -55,12 +82,28 @@ const fullHeaders = function (headerList) {
   return headers;
 }
 
+//get请求url封装
+const buildUrlParams = function (params) {
+  if (!params) {
+    return null;
+  }
+  let paramStr = '';
+
+  for (let key in params) {
+    if (params.hasOwnProperty(key)) {
+      paramStr += '&' + key + '=' + encodeURIComponent(params[key]);
+    }
+  }
+  return paramStr.substr(1);
+};
+
+//封装表单参数
 const buildFormParams = function (params) {
   if (!params) {
     return null;
   }
-  var form = new FormData()
-  for (var key in params) {
+  let form = new FormData()
+  for (let key in params) {
     if (params.hasOwnProperty(key)) {
       if (isFileParam(params[key])) {
         form.append('file', params[key])
@@ -99,10 +142,10 @@ const normalizeParams = function (params) {
   for (let key in params) {
     if (params.hasOwnProperty(key) && params[key] != undefined && params[key] != null) {
       let value = params[key];
-      if (this.isFileParam(value) || Array.isArray(value)) {//如果是数组，文件则不处理参数
+      if (isFileParam(value) || Array.isArray(value)) {//如果是数组，文件则不处理参数
         newParams[key] = value;
       } else {
-        newParams[key] = this.paramToString(value);
+        newParams[key] = paramToString(value);
       }
     }
   }

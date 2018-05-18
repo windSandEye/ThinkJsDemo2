@@ -1,0 +1,52 @@
+.pagination {
+  position: fixed;
+  display: flex;
+  background-color: #ffffff;
+  bottom: 0;
+  padding: 10px 15px;
+  width: calc(100% - 256px);
+  flex-direction: row-reverse;
+  z-index: 10;
+  .pageShow {
+    padding: 5px 20px;
+    align-items: center;
+    display: flex;
+    .pageNum {
+      padding: 2px 8px;
+      border: 1px solid #b5dbe0;
+      border-radius: 5px;
+      margin: 0 5px;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        color: #887cff;
+        border: 1px solid #887cff;
+      }
+    }
+    .pageMore {
+      font-weight: 700;
+      color: #dcc0c0;
+      text-decoration: none;
+      padding: 2px 8px;
+      cursor: pointer;
+      &:hover {
+        color: #887cff;
+      }
+    }
+    .activePage {
+      color: #887cff;
+      border: 1px solid #887cff;
+    }
+    .changePageIcon {
+      font-size: 2.1rem;
+      padding: 1px 8px;
+    }
+    .noPage {
+      color: #dcdcdc;
+    }
+    .count {
+      margin-left: 30px;
+    }
+  }
+}

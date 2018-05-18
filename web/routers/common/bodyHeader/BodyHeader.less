@@ -1,0 +1,54 @@
+.bodyHeader {
+  height: 56px;
+  border-bottom: 1px solid #ffcccc;
+  background-color: #F8F8F8;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .headerIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #8f8fff;
+    position: absolute;
+    z-index: 10;
+    .backIcon {
+      padding: 5px 10px;
+      font-size: 2.6rem;
+    }
+    .backTitle {
+      text-decoration: none;
+      color: #8f8fff;
+    }
+  }
+  .headerTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 17px 0;
+    position: relative;
+    .downIcon {
+      font-size: 2rem;
+      padding: 0 5px;
+    }
+    .dropDown {
+      display: flex;
+      position: absolute;
+      border: 1px solid #fdc5c5;
+      top: 56px;
+      z-index: 10;
+      background: #ffffff;
+      padding: 10px 0;
+      box-shadow: 0px 0px 2px 2px #ffcfcf;
+      flex-direction: column;
+      align-items: center;
+      .downItem {
+        padding: 10px 20px;
+        &:hover{
+            background-color: #3ffd89;
+        }
+      }
+    }
+  }
+}

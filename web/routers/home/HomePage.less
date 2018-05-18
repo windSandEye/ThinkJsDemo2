@@ -1,0 +1,133 @@
+.homeLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #4A4A4A;
+  .homeIndex {
+    min-width: 1172px;
+    .container {
+      width: 1172px;
+      margin: 0 auto;
+      background-color: #4A4A4A;
+      .menuLeft {
+        width: 70%;
+        float: left;
+        .menuRow {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          .muenItem {
+            padding: 40px 60px;
+            margin: 20px 30px;
+            text-align: center;
+            .menuTitle {
+              padding: 10px 0;
+              color: #ffffff;
+            }
+          }
+          .business {
+            background-color: #00ce2a;
+            &:hover {
+              background-color: #00ea30;
+              cursor: pointer;
+            }
+          }
+          .inventory {
+            background-color: #ff9459;
+            &:hover {
+              background-color: #f97c38;
+              cursor: pointer;
+            }
+          }
+          .warehouse {
+            background-color: #ff5b00;
+            &:hover {
+              background-color: #d84e01;
+              cursor: pointer;
+            }
+          }
+          .purchase {
+            background-color: #48c6ff;
+            &:hover {
+              background-color: #00aaf7;
+              cursor: pointer;
+            }
+          }
+          .sell {
+            background-color: #6070d6;
+            &:hover {
+              background-color: #4353bd;
+              cursor: pointer;
+            }
+          }
+          .allot {
+            background-color: #ac89b3;
+            &:hover {
+              background-color: #9d61a9;
+              cursor: pointer;
+            }
+          }
+          .customers {
+            background-color: #ff7b82;
+            &:hover {
+              background-color: #fd5c65;
+              cursor: pointer;
+            }
+          }
+          .supplier {
+            background-color: #f95252;
+            &:hover {
+              background-color: #d24848;
+              cursor: pointer;
+            }
+          }
+          .statistics {
+            background-color: #828181;
+            &:hover {
+              background-color: #aba9a9;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    .menuRight {
+      width: 30%;
+      float: left;
+      .menuRow {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .muenItem {
+          padding: 40px 60px;
+          margin: 20px 30px;
+          text-align: center;
+          .menuTitle {
+            padding: 10px 0;
+            color: #ffffff;
+          }
+        }
+        .aboutUs {
+          background-color: #55fd60;
+          &:hover {
+            background-color: #00ff11;
+            cursor: pointer;
+          }
+        }
+        .guide {
+          background-color: #20a7d8;
+          &:hover {
+            background-color: #018ec1;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.clr {
+  clear: both;
+}

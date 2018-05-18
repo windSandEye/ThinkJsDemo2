@@ -1,0 +1,54 @@
+.cardTable {
+  position: relative;
+  .cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative;
+    .listItem {
+      padding: 15px 45px 15px 50px;
+      background-color: #ffffff;
+      background-image: url(/static/img/card-template.jpg);
+      width: 350px;
+      height: 200px;
+      background-size: 350px;
+      line-height: 2;
+      font-size: 1.5rem;
+      margin: 15px;
+      position: relative;
+      &:hover {
+        border: 2px solid #ffffff;
+      }
+      .name {
+        font-size: 2rem;
+        font-weight: 700;
+        font-style: italic;
+        .department {
+          padding-left: 10px;
+          font-size: 1.5rem;
+        }
+      }
+      .company {
+        font-size: 1.8rem;
+        color: #864104;
+        font-weight: 700;
+      }
+      .checkboxIcon {
+        position: absolute;
+        left: 15px;
+        top: 5px;
+        display: none;
+        .checkIcon {
+          color: #089200;
+          font-size: 2rem;
+        }
+      }
+    }
+    .checkItem {
+      box-shadow: 0 0 4px 4px #a98888;
+    }
+  }
+}

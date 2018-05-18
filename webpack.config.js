@@ -13,7 +13,7 @@ module.exports = {
         path: path.resolve(__dirname, './www/static/js'),   //指定编译后文件生成目录
         filename: '[name].bundle.js',
         chunkFilename:'[name].bundle.js',                   //未写在entry中的异步加载，将会单独打包出来，默认包名为[id].js,这里可以修改
-        publicPath: "./static/js/"                          //指定html引用的虚拟目录，webpack会将未写在entry中的异步包按需自动填写到html中
+        publicPath: "/static/js/"                          //指定html引用的虚拟目录，webpack会将未写在entry中的异步包按需自动填写到html中
     },
     resolve: {
         extensions: ['.js', '.jsx', '.less', '.css']
@@ -73,7 +73,7 @@ module.exports = {
             __SSR__: JSON.stringify(true)
         }),
         //启动热替换功能
-        //    new webpack.HotModuleReplacementPlugin()
+        //  new webpack.HotModuleReplacementPlugin()
 
     ]
 }
