@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import FontAwesome from 'react-fontawesome';
 import BodyHeader from '../common/bodyHeader/BodyHeader';
 import CustomerList from './list/CustomerList';
+import CustomerDetail from './detail/CustomerDetail';
+
+
 import styles from './Customers.less';
 
 @connect(state => ({
@@ -14,7 +18,9 @@ export default class Customers extends React.Component {
         this.state = {
             downList: [
                 { value: 1, title: '客户列表', url: 'business/customers' },
-                { value: 2, title: '客户详情', url: 'business/customerDetail' }],
+                { value: 2, title: '新增客户', url: 'business/customers/createPage' },
+                { value: 3, title: '客户详情', url: 'business/customers/detailPage' }
+            ],
             search: '',
             showCheckbox: false
         }
@@ -27,6 +33,16 @@ export default class Customers extends React.Component {
 
     //删除
     deleteCustomer() {
+        if (this.state.showCheckbox) {
+            this.props.dispatch({
+                type: 'customers/deleteCustomer',
+                param: {
+                    idList: this.customerRef.getCheckItem(),
+                    pageNum: this.props.customers.customerList.currentPage,
+                    keyword: this.state.search
+                }
+            })
+        }
         this.setState({
             showCheckbox: !this.state.showCheckbox
         })
@@ -37,6 +53,11 @@ export default class Customers extends React.Component {
         this.props.dispatch({
             type: 'customers/findAll'
         })
+    }
+
+    //跳转新增页面
+    createCustomer() {
+        this.props.dispatch(routerRedux.push('/manage/business/customers/createPage'));
     }
 
     //回车查询
@@ -61,10 +82,27 @@ export default class Customers extends React.Component {
         })
     }
 
+    //获取内容显示标题
+    getBodyHeaderTitle() {
+        let path = this.props.location.pathname;
+        let currentBody = this.state.downList.find(item => path == `/manage/${item.url}`);
+        if (currentBody) {
+            return currentBody.title;
+        } else {
+            return '无标题'
+        }
+    }
+
+    //返回
+    headerGoBack() {
+        this.props.history.goBack()
+    }
+
     render() {
         return (
             <div className={styles.contianer}>
-                <BodyHeader downList={this.state.downList} dispatch={this.props.dispatch} />
+                <BodyHeader downList={this.state.downList} dispatch={this.props.dispatch}
+                    currentTitle={'客户列表'} goBack={this.headerGoBack.bind(this)} />
                 <div className={styles.bodyContent}>
                     <div className={styles.toolBar}>
                         <div className={styles.barGroup}>
@@ -80,6 +118,7 @@ export default class Customers extends React.Component {
                                 className={styles.barBtn}
                                 name={'plus'}
                                 title={'新增'}
+                                onClick={this.createCustomer.bind(this)}
                             />
                             <FontAwesome
                                 className={styles.barBtn}
@@ -114,7 +153,13 @@ export default class Customers extends React.Component {
                             />
                         </div>
                     </div>
-                    <CustomerList showCheckbox={this.state.showCheckbox} />
+                    <CustomerList
+                        ref={(customerRef) => { this.customerRef = customerRef }}
+                        showCheckbox={this.state.showCheckbox}
+                        searchValue={this.state.search}
+                        customers={this.props.customers}
+                        dispatch={this.props.dispatch}
+                    />
                 </div>
             </div>
         )

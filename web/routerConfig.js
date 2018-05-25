@@ -21,6 +21,12 @@ module.exports = [
                         component: () => import('./routers/customers/Customers'),
                     },
                     {
+                        name: '新增客户',
+                        path: 'customers/createPage',
+                        model: ['customers'],
+                        component: () => import('./routers/customers/detail/CustomerDetail'),
+                    },
+                    {
                         name: '供应商管理',
                         path: 'supplier',
                         model: ['home'],

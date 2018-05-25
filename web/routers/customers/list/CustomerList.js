@@ -6,9 +6,6 @@ import Pagination from '../../common/pagination/Pagination';
 import utils from '../../../utils/utils'
 import styles from './CustomerList.less';
 
-@connect(state => ({
-    customers: state.customers
-}))
 export default class CustomerList extends React.Component {
     constructor(props) {
         super(props)
@@ -50,6 +47,23 @@ export default class CustomerList extends React.Component {
         })
     }
 
+    //分页
+    handleChangePage(page) {
+        this.props.dispatch({
+            type: 'customers/findAll',
+            param: {
+                keyword: this.props.searchValue,
+                pageNum: page
+            }
+        })
+    }
+
+    //获取选中的客户项
+    getCheckItem() {
+        let checkItemList = this.state.customerList.data.filter(item => item.checked)
+        return checkItemList.map(item => item.id);
+    }
+
 
     render() {
         const customerList = this.state.customerList;
@@ -81,15 +95,11 @@ export default class CustomerList extends React.Component {
 
                 </div>
                 <Pagination
-                    // totalPages={this.props.customers.customerList.totalPages}
-                    // currentPage={this.props.customers.customerList.currentPage}
-                    // count={this.props.customers.customerList.count}
-                    // pageSize={this.props.customers.customerList.pageSize}
-
-                    totalPages={8}
-                    currentPage={2}
-                    count={100}
-                    pageSize={10}
+                    totalPages={this.props.customers.customerList.totalPages}
+                    currentPage={this.props.customers.customerList.currentPage}
+                    count={this.props.customers.customerList.count}
+                    pageSize={this.props.customers.customerList.pageSize}
+                    handleChangePage={this.handleChangePage.bind(this)}
                 />
             </div>
         )

@@ -10,7 +10,7 @@ export default class BodyHeader extends React.Component {
         super(props)
         this.state = {
             downList: this.props.downList || [],
-            currentTitle: this.props.downList && this.props.downList.length > 0 ? this.props.downList[0].title : '无标题',
+            currentTitle: this.props.currentTitle,
             showTitle: false
         }
     }
@@ -57,7 +57,7 @@ export default class BodyHeader extends React.Component {
                         className={styles.backIcon}
                         name='angle-left'
                     />
-                    <a href='/home' className={styles.backTitle}>返回</a>
+                    <a onClick={() => this.props.goBack()} className={styles.backTitle}>返回</a>
                 </div>
                 <div className={styles.headerTitle}>
                     <div>{this.state.currentTitle}</div>

@@ -20,11 +20,10 @@ export function sendQequest({ url, method, body, headers, queryParams }) {
   // 为get请求添加时间戳，避免图片之内的不做二次响应                             
   if (method === 'GET') {
     queryParams._t = new Date().getTime();
+    // 封装get请求的路径
+    url += (url.indexOf('?') === -1 ? '?' : '&') +
+      buildUrlParams(normalizeParams(queryParams));
   }
-
-  // 封装get请求的路径
-  url += (url.indexOf('?') === -1 ? '?' : '&') +
-    buildUrlParams(normalizeParams(queryParams));
 
   let bodyParam = body;
   //请求头设置
@@ -61,8 +60,8 @@ const fullHeaders = function (headerList) {
   //请求头封装
   let headers = new Headers();
   if (!headerList) {//默认返回方式
-    headers.append('Accept', 'application/json;charset=UTF-8');
-    headers.append('Content-Type', 'application/json;charset=UTF-8');
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
   } else {//所有返回方式都支持json格式
     let flag = false;
     for (let header of headerList) {
@@ -72,8 +71,8 @@ const fullHeaders = function (headerList) {
       }
     }
     if (!flag) {
-      headers.append('Accept', 'application/json;charset=UTF-8');
-      headers.append('Content-Type', 'application/json;charset=UTF-8');
+      headers.append('Accept', 'application/json;');
+      headers.append('Content-Type', 'application/json');
     }
     headers.append('Accept', headerList.jion(";"));
     headers.append('Content-Type', headerList.jion(";"));

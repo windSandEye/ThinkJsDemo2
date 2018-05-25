@@ -203,6 +203,7 @@ body {
   color: #8f8fff;
   position: absolute;
   z-index: 10;
+  cursor: pointer;
 }
 .BodyHeader_bodyHeader-1I0V8 .BodyHeader_headerIcon-26cqQ .BodyHeader_backIcon-gjakw {
   padding: 5px 10px;
@@ -347,6 +348,36 @@ body {
 }
 .CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_checkItem-3s_wA {
   box-shadow: 0 0 4px 4px #a98888;
+}
+.CustomerDetail_cardBody-2hAzE {
+  min-height: 100%;
+}
+.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK {
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w {
+  background-image: url(/static/img/card-template.jpg);
+  background-repeat: no-repeat;
+  width: 900px;
+  height: 500px;
+  background-size: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w .CustomerDetail_formCard-2ksUs {
+  padding: 10px 150px;
+}
+.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w .CustomerDetail_formCard-2ksUs .CustomerDetail_submitBtn-1bhXi {
+  text-align: center;
+  padding-top: 15px;
+}
+.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w .CustomerDetail_formCard-2ksUs .CustomerDetail_submitBtn-1bhXi .CustomerDetail_btnPadding-1rtXK {
+  padding: 6px 20px;
 }
 .Customers_contianer-3btq4 .Customers_bodyContent-SZtl8 {
   width: 100%;
