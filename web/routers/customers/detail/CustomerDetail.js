@@ -11,15 +11,13 @@ import validate from '../../../utils/validate'
 import BodyHeader from '../../common/bodyHeader/BodyHeader';
 import styles from './CustomerDetail.less';
 
+@connect(state => ({
+    customers: state.customers
+}))
 class CustomerDetail extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            form: this.props.customers.customer || {},
-            formValidList: []
-        }
     }
-
 
 
     //返回
@@ -35,7 +33,7 @@ class CustomerDetail extends React.Component {
                 let customer = this.formRef.getFieldValues();
                 this.props.dispatch({
                     type: 'customers/createCustomer',
-                    customer:customer
+                    customer: customer
                 })
             }
         })

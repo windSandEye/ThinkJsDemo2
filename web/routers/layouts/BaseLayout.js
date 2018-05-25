@@ -17,6 +17,32 @@ export default class BaseLayout extends React.Component {
         }
     }
 
+    componentDidMount() {
+        let path = this.props.location.pathname;
+        this.macthMenu(path);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let locationPath = nextProps.location.pathname;
+        let oldPath = this.props.location.pathname;
+        if (oldPath != locationPath) {
+            this.macthMenu(locationPath);
+        }
+    }
+
+    //匹配一个菜单
+    macthMenu(path) {
+        let menuConfig = this.state.menuConfig;
+        let oneMenuPath = path.split('/')[2];
+        if (oneMenuPath) {
+            let oneMenu = menuConfig.find(item => item.path == oneMenuPath);
+            if (oneMenu && oneMenu.children && oneMenu.children.length > 0) {
+                let activeMenu = oneMenu.children.filter(twoMenu => path.indexOf(twoMenu.path) > -1);
+                this.activeMenu(activeMenu[0]);
+            }
+        }
+    }
+
     //鼠标移入
     moveMuen(menu) {
         menu.hover = true;
