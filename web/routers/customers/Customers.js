@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import FontAwesome from 'react-fontawesome';
 import BodyHeader from '../common/bodyHeader/BodyHeader';
+import { Modal, Button, FormControl } from 'react-bootstrap';
 import CustomerList from './list/CustomerList';
 import CustomerDetail from './detail/CustomerDetail';
 
@@ -16,13 +17,11 @@ export default class Customers extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            downList: [
-                { value: 1, title: '客户列表', url: 'business/customers' },
-                { value: 2, title: '新增客户', url: 'business/customers/createPage' },
-                { value: 3, title: '客户详情', url: 'business/customers/detailPage' }
-            ],
+            downList: this.props.customers.downList,
             search: '',
-            showCheckbox: false
+            showCheckbox: false,
+            showModal: false,
+            xlsxFile: null
         }
     }
 
@@ -82,6 +81,44 @@ export default class Customers extends React.Component {
         })
     }
 
+    //导出客户信息
+    exportCustomer() {
+        this.props.dispatch({
+            type: 'customers/exportCustomer'
+        })
+    }
+
+    //导入客户信息
+    importCustomer() {
+        this.props.dispatch({
+            type: 'customers/importCustomer',
+            xlsxFile: this.state.xlsxFile
+        })
+        this.closeModal();
+    }
+
+    //打开弹窗
+    openModal() {
+        this.setState({
+            showModal: true
+        })
+    }
+
+    //关闭弹窗
+    closeModal() {
+        this.setState({
+            showModal: false,
+            xlsxFile: null
+        })
+    }
+
+    //文件内容改变
+    changeFile(e) {
+        this.setState({
+            xlsxFile: e.target.files[0]
+        })
+    }
+
     //获取内容显示标题
     getBodyHeaderTitle() {
         let path = this.props.location.pathname;
@@ -133,11 +170,13 @@ export default class Customers extends React.Component {
                                 className={styles.barBtn}
                                 name={'upload'}
                                 title={'导入'}
+                                onClick={this.openModal.bind(this)}
                             />
                             <FontAwesome
                                 className={styles.barBtn}
                                 name={'download'}
                                 title={'导出'}
+                                onClick={this.exportCustomer.bind(this)}
                             />
                         </div>
                         <div className={styles.barGroup}>
@@ -160,6 +199,24 @@ export default class Customers extends React.Component {
                         customers={this.props.customers}
                         dispatch={this.props.dispatch}
                     />
+                    <Modal show={this.state.showModal} onHide={this.closeModal.bind(this)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>导入客户信息</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <FormControl
+                                type="file"
+                                placeholder="请选择上传的文件"
+                                className={styles.inputFile}
+                                onChange={this.changeFile.bind(this)}
+                            />
+                            <div className={styles.template}><a href={'/manage/business/customers/exportTemplate'}>模版下载</a></div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button bsStyle="primary" onClick={this.importCustomer.bind(this)}>确定</Button>
+                            <Button onClick={this.closeModal.bind(this)}>取消</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             </div>
         )

@@ -19,12 +19,20 @@ module.exports = [
                         path: 'customers',
                         model: ['customers'],
                         component: () => import('./routers/customers/Customers'),
-                    },
-                    {
-                        name: '新增客户',
-                        path: 'customers/createPage',
-                        model: ['customers'],
-                        component: () => import('./routers/customers/detail/CustomerDetail'),
+                        children:[
+                            {
+                                name: '新增客户',
+                                path: 'createPage',
+                                model: ['customers'],
+                                component: () => import('./routers/customers/detail/CustomerDetail'),
+                            },
+                            {
+                                name: '客户详情',
+                                path: 'detailPage',
+                                model: ['customers'],
+                                component: () => import('./routers/customers/detail/CustomerDetail'),
+                            },
+                        ]   
                     },
                     {
                         name: '供应商管理',

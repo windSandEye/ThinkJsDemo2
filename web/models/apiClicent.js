@@ -11,7 +11,8 @@ import fetch from 'isomorphic-fetch';
   body:<Object>请求参数，可选
   headers:<Array>请求头设置，可选
 */
-export function sendQequest({ url, method, body, headers, queryParams }) {
+export function sendQequest({ url, method, body, queryParams = {},
+  accept = 'application/json; charset=utf-8', contentType = 'application/json; charset=utf-8' }) {
   //拼接主机地址
   let basePath = location.protocol + "//" + location.host;
   //拼接请求路径
@@ -27,10 +28,8 @@ export function sendQequest({ url, method, body, headers, queryParams }) {
 
   let bodyParam = body;
   //请求头设置
-  if (headers) {
-    if (headers.indexOf('application/x-www-form-urlencoded') > -1 || headers.indexOf('multipart/form-data') > -1) {
-      bodyParam = buildFormParams(normalizeParams(body));
-    }
+  if (accept.indexOf('application/x-www-form-urlencoded') > -1 || accept.indexOf('multipart/form-data') > -1) {
+    bodyParam = buildFormParams(normalizeParams(body));
   } else {
     function replacer(key, value) {//替换null为undefined的目地是：JSON解析的时候会忽略掉undefined的属性，而null会转换为'null'字符串
       if (value === null) {
@@ -39,9 +38,13 @@ export function sendQequest({ url, method, body, headers, queryParams }) {
       return value;
     }
     bodyParam = body ? JSON.stringify(body, replacer) : null;
+
   }
   //请求头封装
-  headers = fullHeaders(headers);
+  const headers = fullHeaders(accept, contentType);
+
+
+
 
   return fetch(url, {
     method: method,
@@ -49,35 +52,39 @@ export function sendQequest({ url, method, body, headers, queryParams }) {
     body: bodyParam,
     credentials: 'include'
   }).then(checkStatus).then(function (response) {
-    return response.json().then(function (data) {
-      return data;
-    })
+    const contentType = response.headers.get('Content-Type');
+    //json数据处理
+    if (contentType.toLowerCase() == 'application/json; charset=utf-8') {
+      return response.json().then(function (data) {
+        return data;
+      })
+    } else if (contentType.toLowerCase() == "application/octet-stream") {//文件处理
+      return response.blob().then(function (data) {
+        let a = document.createElement('a');
+        let url = window.URL.createObjectURL(data);
+        let filename = response.headers.get('Content-Disposition').split("=")[1];
+        a.href = url;
+        a.download = filename;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+    } else {
+      return response.text().then(function (data) {//文本处理
+        return data;
+      })
+    }
   });
 }
 
 //封装请求头
-const fullHeaders = function (headerList) {
+const fullHeaders = function (accept, contentType) {
   //请求头封装
   let headers = new Headers();
-  if (!headerList) {//默认返回方式
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
-  } else {//所有返回方式都支持json格式
-    let flag = false;
-    for (let header of headerList) {
-      if (/application\/json/.test(header)) {
-        flag = true;
-        break;
-      }
-    }
-    if (!flag) {
-      headers.append('Accept', 'application/json;');
-      headers.append('Content-Type', 'application/json');
-    }
-    headers.append('Accept', headerList.jion(";"));
-    headers.append('Content-Type', headerList.jion(";"));
+  headers.append('Accept', accept);
+  //上传文件的时候不需要设置content-type，因为fetch源码中会自动设置
+  if (!(contentType.indexOf('application/x-www-form-urlencoded') > -1) && !(contentType.indexOf('multipart/form-data') > -1)) {
+    headers.append('Content-Type', contentType);
   }
-
   return headers;
 }
 
@@ -104,11 +111,7 @@ const buildFormParams = function (params) {
   let form = new FormData()
   for (let key in params) {
     if (params.hasOwnProperty(key)) {
-      if (isFileParam(params[key])) {
-        form.append('file', params[key])
-      } else {
-        form.append(key, params[key]);
-      }
+      form.append(key, params[key]);
     }
   }
   return form;

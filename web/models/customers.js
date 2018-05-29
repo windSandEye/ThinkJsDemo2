@@ -11,6 +11,15 @@ const tableInit = {
     data: []
 }
 
+const comtomerInit = {
+    address: null,
+    company: null,
+    department: null,
+    id: null,
+    name: null,
+    phone: null
+}
+
 export default {
     namespace: 'customers',
 
@@ -18,9 +27,9 @@ export default {
         customerList: Object.assign({}, tableInit),
         downList: [
             { value: 1, title: '客户列表', url: 'business/customers' },
-            { value: 2, title: '新增客户', url: 'business/customers/createPage' },
-            { value: 3, title: '客户详情', url: 'business/customers/detailPage' }
+            { value: 2, title: '新增客户', url: 'business/customers/createPage' }
         ],
+        customerDetail: Object.assign({}, comtomerInit),
     },
 
     effects: {
@@ -73,13 +82,64 @@ export default {
             } catch (e) {
                 console.log(e)
             }
-        }
+        },
+        *findCustomer({ id }, { call, put, select }) {
+            try {
+                let customerDetail = yield sendQequest({
+                    url: `/manage/business/customers/findById`,
+                    method: 'GET',
+                    queryParams: { id: id }
+                });
+                yield put({ type: 'changeCustomer', customerDetail: customerDetail })
+            } catch (e) {
+                console.log(e)
+            }
+        },
+        *editCustomer({ customer }, { call, put, select }) {
+            try {
+                const insertId = yield sendQequest({
+                    url: `/manage/business/customers/update`,
+                    method: 'POST',
+                    body: customer
+                });
+                yield put(routerRedux.push('/manage/business/customers'))
+            } catch (e) {
+                console.log(e)
+            }
+        },
+        *updateDownList({ id }, { call, put, select }) {
+            yield put(routerRedux.push(`/manage/business/customers/detailPage?${id}`))
+        },
+        *exportCustomer({ }, { call, put, select }) {
+            yield sendQequest({
+                url: `/manage/business/customers/export`,
+                method: 'GET'
+            });
+        },
+        *importCustomer({ xlsxFile }, { call, put, select }) {
+            let formData = { xlsxFile: xlsxFile }
+            yield sendQequest({
+                url: `/manage/business/customers/import`,
+                method: 'PUT',
+                body: formData,
+                accept: 'multipart/form-data',
+                contentType: 'multipart/form-data'
+            });
 
+            yield put({ type: 'findAll', param: { pageNum: 1, keyword: null } })
+
+        }
     },
 
     reducers: {
         changeList(state, action) {
             return { ...state, customerList: action.data }
+        },
+        changeCustomer(state, action) {
+            return { ...state, customerDetail: action.customerDetail }
+        },
+        resetCustomer(state, action) {
+            return { ...state, customerDetail: Object.assign({}, comtomerInit) }
         }
     }
 };

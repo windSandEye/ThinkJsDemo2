@@ -125,7 +125,8 @@ export default class BootstrapForm extends React.Component {
                 return React.cloneElement(fieldItem, {
                     ref: field,
                     key: field,
-                    onChange: this.handleChange.bind(this, field, fieldItem.props.onChange)
+                    onChange: this.handleChange.bind(this, field, fieldItem.props.onChange),
+                    value: this.state.form[field] || ''
                 })
             };
         } else {
@@ -169,7 +170,8 @@ export default class BootstrapForm extends React.Component {
                     return React.cloneElement(child, {
                         getFieldDecorator: this.getFieldDecorator.bind(this),
                         validState: this.getValidateState(child.props.field),
-                        errorMsg: this.getValidateMsg(child.props.field)
+                        errorMsg: this.getValidateMsg(child.props.field),
+                        setFieldValues: this.setFieldValues.bind(this),
                     });
                 })}
             </Form>

@@ -21,6 +21,12 @@ export default class BodyHeader extends React.Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.currentTitle != nextProps.currentTitle) {
+            this.setState({ currentTitle: nextProps.currentTitle })
+        }
+    }
+
     componentWillUnmount() {
         this.setState = (state, callback) => {
             return;
@@ -52,12 +58,12 @@ export default class BodyHeader extends React.Component {
         const downList = this.state.downList;
         return (
             <div className={styles.bodyHeader}>
-                <div className={styles.headerIcon}>
+                <div className={styles.headerIcon} onClick={() => this.props.goBack()}>
                     <FontAwesome
                         className={styles.backIcon}
                         name='angle-left'
                     />
-                    <a onClick={() => this.props.goBack()} className={styles.backTitle}>返回</a>
+                    <a className={styles.backTitle}>返回</a>
                 </div>
                 <div className={styles.headerTitle}>
                     <div>{this.state.currentTitle}</div>

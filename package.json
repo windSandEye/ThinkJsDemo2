@@ -60,6 +60,7 @@
     "less-loader": "^4.0.6",
     "lodash.clonedeep": "^4.5.0",
     "node-notifier": "^5.2.1",
+    "node-xlsx": "^0.12.0",
     "path": "^0.12.7",
     "promise-polyfill": "^7.1.1",
     "react": "^16.2.0",

@@ -64,6 +64,14 @@ export default class CustomerList extends React.Component {
         return checkItemList.map(item => item.id);
     }
 
+    //进入详情页面
+    enterDetail(id) {
+        this.props.dispatch({
+            type: 'customers/updateDownList',
+            id: id
+        })
+    }
+
 
     render() {
         const customerList = this.state.customerList;
@@ -72,7 +80,8 @@ export default class CustomerList extends React.Component {
                 <div className={styles.cardList} id={'cardList'} style={{ width: this.state.cardWidth }}>
                     {customerList.data.map((item, index) => {
                         return (
-                            <div className={this.props.showCheckbox ? `${styles.listItem} ${styles.checkItem}` : styles.listItem} key={item.id}>
+                            <div className={this.props.showCheckbox ? `${styles.listItem} ${styles.checkItem}` : styles.listItem}
+                                key={item.id} onDoubleClick={this.enterDetail.bind(this, item.id)}>
                                 <div className={styles.checkboxIcon} style={{ display: this.props.showCheckbox ? 'block' : 'none' }}>
                                     {item.checked ?
                                         <FontAwesome name='check-square' size='2x' className={styles.checkIcon}

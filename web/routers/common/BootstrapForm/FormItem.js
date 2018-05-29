@@ -7,6 +7,14 @@ export default class FormItem extends React.Component {
         this.props.handleChange();
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.initValue != this.props.initValue) {
+            let formItem = {};
+            formItem[this.props.field] = nextProps.initValue;
+            this.props.setFieldValues([formItem]);
+        }
+    }
+
     static defaultProps = {
         field: null,
         validState: null,
@@ -15,7 +23,8 @@ export default class FormItem extends React.Component {
         errorMsg: null,
         initValue: null,
         className: null,
-        style: null
+        style: null,
+        value: null
     }
 
     render() {
