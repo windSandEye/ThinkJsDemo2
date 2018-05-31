@@ -18,11 +18,56 @@ export default class BootstrapForm extends React.Component {
     }
 
     //表单值改变
-    handleChange(name, onChange, e) {
+    handleInputChange(name, onChange, e) {
         if (onChange) {
             onChange(e);
         }
         this.state.form[name] = e.target.value;
+        //修改校验信息
+        let validList = this.changeFieldVaild(name);
+        this.setState({ form: this.state.form, validList: validList });
+    }
+
+    //多选框值改变
+    handleCheckboxChange(name, onChange, value, checked) {
+        if (onChange) {
+            onChange(value, checked);
+        }
+        let checkList = [];
+        if (this.state.form[name]) {
+            checkList = this.state.form[name].split(',');
+        }
+        let index = checkList.findIndex(item => item == value);
+        if (index == -1) {
+            checkList.push(value);
+        } else {
+            checkList.splice(index, 1);
+        }
+        this.state.form[name] = checkList.join(',');
+        //修改校验信息
+        let validList = this.changeFieldVaild(name);
+        this.setState({ form: this.state.form, validList: validList });
+    }
+
+    //单选框值改变
+    handleRadioChange(name, onChange, value, checked) {
+        if (onChange) {
+            onChange(value, checked);
+        }
+        if (checked) {
+            this.state.form[name] = value;
+        }
+        //修改校验信息
+        let validList = this.changeFieldVaild(name);
+        this.setState({ form: this.state.form, validList: validList });
+    }
+
+    //下拉框
+    handleSelectChange(name, onChange, value) {
+        if (onChange) {
+            onChange(value);
+        }
+        this.state.form[name] = value;
         //修改校验信息
         let validList = this.changeFieldVaild(name);
         this.setState({ form: this.state.form, validList: validList });
@@ -120,15 +165,44 @@ export default class BootstrapForm extends React.Component {
                 this.state.validList.push({ field: field, validState: null, errorMsg: null })
             }
 
-            //对表单组件进行处理
-            return (fieldItem) => {
-                return React.cloneElement(fieldItem, {
-                    ref: field,
-                    key: field,
-                    onChange: this.handleChange.bind(this, field, fieldItem.props.onChange),
-                    value: this.state.form[field] || ''
-                })
-            };
+            if (options.componentType == 'input' || options.componentType == 'textarea') {
+                //对表单组件进行处理
+                return (fieldItem) => {
+                    return React.cloneElement(fieldItem, {
+                        ref: field,
+                        key: field,
+                        onChange: this.handleInputChange.bind(this, field, fieldItem.props.onChange),
+                        value: this.state.form[field] || ''
+                    })
+                };
+            } else if (options.componentType == 'checkbox') {
+                return (fieldItem) => {
+                    return React.cloneElement(fieldItem, {
+                        ref: `${field}-${fieldItem.value}`,
+                        key: `${field}-${fieldItem.value}`,
+                        onChange: this.handleCheckboxChange.bind(this, field, fieldItem.props.onChange),
+                        value: this.state.form[field] || ''
+                    })
+                };
+            } else if (options.componentType == 'radio') {
+                return (fieldItem) => {
+                    return React.cloneElement(fieldItem, {
+                        ref: `${field}-${fieldItem.value}`,
+                        key: `${field}-${fieldItem.value}`,
+                        onChange: this.handleRadioChange.bind(this, field, fieldItem.props.onChange),
+                        value: this.state.form[field] || ''
+                    })
+                };
+            } else if (options.componentType == 'select') {
+                return (fieldItem) => {
+                    return React.cloneElement(fieldItem, {
+                        ref: `${field}-${fieldItem.value}`,
+                        key: `${field}-${fieldItem.value}`,
+                        onChange: this.handleSelectChange.bind(this, field, fieldItem.props.onChange),
+                        value: this.state.form[field] || ''
+                    })
+                };
+            }
         } else {
             return (fieldItem) => {
                 return fieldItem;

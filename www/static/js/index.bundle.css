@@ -349,6 +349,117 @@ body {
 .CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_checkItem-3s_wA {
   box-shadow: 0 0 4px 4px #a98888;
 }
+.Checkbox_groupInline-Jt-FK {
+  display: flex;
+  flex-direction: row;
+}
+.Checkbox_groupBlock-UwO6d {
+  display: flex;
+  flex-direction: column;
+}
+.Checkbox_groupBlock-UwO6d .Checkbox_checkbox-1zlOy {
+  padding-bottom: 10px;
+}
+.Checkbox_checkbox-1zlOy {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+.Checkbox_checkbox-1zlOy .Checkbox_checkboxBtn-1FARF {
+  font-size: 20px;
+  color: #7a7aff;
+}
+.Checkbox_checkbox-1zlOy .Checkbox_checkboxLabel-COxxv {
+  margin-left: 5px;
+}
+.Radio_groupInline-becbi {
+  display: flex;
+  flex-direction: row;
+}
+.Radio_groupBlock-26SSK {
+  display: flex;
+  flex-direction: column;
+}
+.Radio_groupBlock-26SSK .Radio_radio-1hQWI {
+  padding-bottom: 10px;
+}
+.Radio_radio-1hQWI {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+.Radio_radio-1hQWI .Radio_radioBtn-2TdRK {
+  font-size: 20px;
+  color: #7a7aff;
+}
+.Radio_radio-1hQWI .Radio_radioLabel-2PWtK {
+  margin-left: 5px;
+}
+.Pagination_pagination-2I7im {
+  position: fixed;
+  display: flex;
+  background-color: #ffffff;
+  bottom: 0;
+  padding: 10px 15px;
+  width: calc(100% - 256px);
+  flex-direction: row-reverse;
+  z-index: 10;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl {
+  padding: 5px 20px;
+  align-items: center;
+  display: flex;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_pageNum-3g0e9 {
+  padding: 2px 8px;
+  border: 1px solid #b5dbe0;
+  border-radius: 5px;
+  margin: 0 5px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_pageNum-3g0e9:hover {
+  color: #887cff;
+  border: 1px solid #887cff;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_pageMore-2xauN {
+  font-weight: 700;
+  color: #dcc0c0;
+  text-decoration: none;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_pageMore-2xauN:hover {
+  color: #887cff;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_activePage-3s6J6 {
+  color: #887cff;
+  border: 1px solid #887cff;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_changePageIcon-2dRFS {
+  font-size: 2.1rem;
+  padding: 1px 8px;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_noPage-Wy1PJ {
+  color: #dcdcdc;
+}
+.Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_count-1yRJN {
+  margin-left: 30px;
+}
+.Select_selectInput-Cwd3R {
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.Select_selectInput-Cwd3R:focus {
+  border-color: #66afe9;
+  outline: 0;
+}
 .CustomerDetail_cardBody-2hAzE {
   min-height: 100%;
 }

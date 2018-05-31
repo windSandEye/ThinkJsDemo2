@@ -3,10 +3,6 @@ import { FormControl, FormGroup, ControlLabel, HelpBlock, Button } from 'react-b
 
 export default class FormItem extends React.Component {
 
-    handleChange(e) {
-        this.props.handleChange();
-    }
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.initValue != this.props.initValue) {
             let formItem = {};
@@ -24,29 +20,69 @@ export default class FormItem extends React.Component {
         initValue: null,
         className: null,
         style: null,
-        value: null
+        value: null,
+        componentType: 'input'
+    }
+
+    //input、textarea渲染
+    renderInput() {
+        return (
+            React.Children.map(this.props.children, (child) => {
+                return this.props.getFieldDecorator(this.props.field,
+                    {
+                        initValue: this.props.initValue,
+                        rules: this.props.rules,
+                        componentType: this.props.componentType
+                    })(child)
+            })
+        )
+    }
+
+    renderCheckbox() {
+        return (
+            <div>
+                {React.Children.map(this.props.children, (child) => {
+                    return this.props.getFieldDecorator(this.props.field,
+                        {
+                            initValue: this.props.initValue,
+                            rules: this.props.rules,
+                            componentType: this.props.componentType
+                        })(child)
+
+                })}
+            </div>)
+    }
+
+    //子节点渲染
+    renderChild() {
+        const componentType = this.props.componentType;
+        switch (componentType) {
+            case 'input':
+            case 'textarea':
+                return this.renderInput();
+            case 'checkbox':
+                return this.renderCheckbox();
+            default:
+                return this.renderInput();
+        }
     }
 
     render() {
+        const validState = this.props.componentType == 'checkbox'
+            || this.props.componentType == 'radio' || this.props.componentType == 'select' ?
+            null : this.props.validState
         return (
             <FormGroup
                 controlId={this.props.field}
-                validationState={this.props.validState}
+                validationState={validState}
                 className={this.props.className}
                 style={this.props.style}
             >
                 <ControlLabel>{this.props.label}</ControlLabel>
-                {React.Children.map(this.props.children, (child) => {
-                    return this.props.getFieldDecorator(this.props.field, { initValue: this.props.initValue, rules: this.props.rules })(child)
-                })}
+                {this.renderChild()}
                 <FormControl.Feedback />
                 <HelpBlock>{this.props.errorMsg}</HelpBlock>
             </FormGroup>
         )
     }
-
-
-
-
-
 }

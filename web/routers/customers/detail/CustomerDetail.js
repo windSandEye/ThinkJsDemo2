@@ -3,11 +3,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import FontAwesome from 'react-fontawesome';
 import { Form, FormControl, FormGroup, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
-import Pagination from '../../common/pagination/Pagination';
-import BootstrapForm from '../../common/BootstrapForm/BootstrapForm';
-import FormItem from '../../common/BootstrapForm/FormItem';
-import utils from '../../../utils/utils';
-import validate from '../../../utils/validate'
+import { RadioGroup, Radio, Pagination, BootstrapForm, FormItem, Select } from '../../common/FormComponent/index';
 import BodyHeader from '../../common/bodyHeader/BodyHeader';
 import styles from './CustomerDetail.less';
 
@@ -120,7 +116,16 @@ class CustomerDetail extends React.Component {
                                     提交
                               </Button>
                             </FormItem>
+                            <FormItem field='aaa' label='详细地址' initValue={''} componentType='select'>
+                                <Select>
+                                    <option value={null}></option>
+                                    <option value='1'>2</option>
+                                    <option value='2'>3</option>
+                                    <option value='3'>4</option>
+                                </Select>
+                            </FormItem>
                         </BootstrapForm>
+
                     </div>
                 </div>
             </div>
