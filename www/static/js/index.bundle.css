@@ -447,18 +447,114 @@ body {
 .Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_count-1yRJN {
   margin-left: 30px;
 }
-.Select_selectInput-Cwd3R {
+.Select_select-2NkLX {
+  position: relative;
+}
+.Select_select-2NkLX .Select_selectInput-Cwd3R {
   width: 100%;
   height: 34px;
-  padding: 6px 12px;
+  padding: 6px 30px 6px 12px;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.Select_selectInput-Cwd3R:focus {
+.Select_select-2NkLX .Select_selectInput-Cwd3R:focus {
   border-color: #66afe9;
   outline: 0;
+}
+.Select_select-2NkLX .Select_selectOptions-2EET6 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: 1px;
+  z-index: 10;
+  max-height: 250px;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+.Select_select-2NkLX .Select_selectOptions-2EET6 li {
+  padding: 5px;
+}
+.Select_select-2NkLX .Select_selectOptions-2EET6 li:hover {
+  background-color: #b7f6ff;
+}
+.Select_select-2NkLX .Select_selectOptions-2EET6 .Select_active-2qKjY {
+  background-color: #f1f1f1;
+}
+.Select_select-2NkLX .Select_caret-2D9pB {
+  position: absolute;
+  right: 1px;
+  font-size: 20px;
+  color: #e68a8a;
+  padding: 7px;
+}
+.message_messageContainer-2OMUF {
+  position: fixed;
+  top: 50px;
+  max-width: 400px;
+  width: 500px;
+  background: #ffffff;
+  padding: 15px;
+  margin: 0 auto;
+  border: 1px solid #f9dfdf;
+  border-radius: 5px;
+  left: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: auto;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation-name: message_message-MBhRR;
+}
+@keyframes message_message-MBhRR {
+  0% {
+    top: -50px;
+    opacity: 1;
+  }
+  10% {
+    top: 50px;
+    opacity: 1;
+  }
+  80% {
+    top: 50px;
+    opacity: 1;
+  }
+  100% {
+    top: -50px;
+    opacity: 0;
+  }
+}
+.message_messageContainer-2OMUF .message_content-2E8kd {
+  display: flex;
+  align-items: center;
+}
+.message_messageContainer-2OMUF .message_content-2E8kd p {
+  margin: 0;
+}
+.message_messageContainer-2OMUF .message_content-2E8kd .message_info-Ft17W {
+  color: #81b509;
+  font-size: 18px;
+  padding-right: 5px;
+}
+.message_messageContainer-2OMUF .message_content-2E8kd .message_success-1nXMw {
+  color: #87d068;
+  font-size: 18px;
+  padding-right: 5px;
+}
+.message_messageContainer-2OMUF .message_content-2E8kd .message_error-8Eq_S {
+  color: #f50;
+  font-size: 18px;
+  padding-right: 5px;
+}
+.message_messageContainer-2OMUF .message_content-2E8kd .message_warn-2zjH7 {
+  color: #fa0;
+  font-size: 18px;
+  padding-right: 5px;
 }
 .CustomerDetail_cardBody-2hAzE {
   min-height: 100%;

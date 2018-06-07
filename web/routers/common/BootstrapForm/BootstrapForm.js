@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import { Form, FormControl, FormGroup, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
+import { Form, FormControl, FormGroup, ControlLabel, HelpBlock, Button, message } from 'react-bootstrap'
 import utils from '../../../utils/utils';
 import validate from '../../../utils/validate'
 
@@ -66,6 +66,17 @@ export default class BootstrapForm extends React.Component {
     handleSelectChange(name, onChange, value) {
         if (onChange) {
             onChange(value);
+        }
+        this.state.form[name] = value;
+        //修改校验信息
+        let validList = this.changeFieldVaild(name);
+        this.setState({ form: this.state.form, validList: validList });
+    }
+
+    //选中下拉选项
+    handleSelected(name, onSelect, value) {
+        if (onSelect) {
+            onSelect(value);
         }
         this.state.form[name] = value;
         //修改校验信息
@@ -199,6 +210,7 @@ export default class BootstrapForm extends React.Component {
                         ref: `${field}-${fieldItem.value}`,
                         key: `${field}-${fieldItem.value}`,
                         onChange: this.handleSelectChange.bind(this, field, fieldItem.props.onChange),
+                        onSelect: this.handleSelected.bind(this, field, fieldItem.props.onSelect),
                         value: this.state.form[field] || ''
                     })
                 };

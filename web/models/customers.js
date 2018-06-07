@@ -1,5 +1,6 @@
 import { sendQequest } from './apiClicent';
 import { routerRedux } from 'dva/router';
+import {message} from '../routers/common/FormComponent/index';
 import CreateCustomerDto from '../../src/dto/customers/CreateCustomDto';
 
 
@@ -77,7 +78,7 @@ export default {
                     method: 'DELETE',
                     body: { idList: param.idList }
                 });
-                alert('删除成功！')
+                message.info('删除成功！')
                 yield put({ type: 'findAll', param: { pageNum: param.pageNum, keyword: param.keyword } })
             } catch (e) {
                 console.log(e)

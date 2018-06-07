@@ -13,3 +13,5 @@ export { default as FormItem } from '../BootstrapForm/FormItem';
 export { default as Pagination } from '../Pagination/Pagination';
 
 export { default as Select } from '../Select/Select';
+
+export { default as message } from '../message/message';

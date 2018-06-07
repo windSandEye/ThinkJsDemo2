@@ -1,0 +1,62 @@
+.messageContainer {
+  position: fixed;
+  top: 50px;
+  max-width: 400px;
+  width: 500px;
+  background: #ffffff;
+  padding: 15px;
+  margin: 0 auto;
+  border: 1px solid #f9dfdf;
+  border-radius: 5px;
+  left: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+  width: auto;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation-name: message;
+  @keyframes message {
+    0% {
+      top: -50px;
+      opacity: 1;
+    }
+    10% {
+      top: 50px;
+      opacity: 1;
+    }
+    80% {
+      top: 50px;
+      opacity: 1;
+    }
+    100% {
+      top: -50px;
+      opacity: 0;
+    }
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+    .info {
+      color: #81b509;
+      font-size: 18px;
+      padding-right: 5px;
+    }
+    .success {
+      color: #87d068;
+      font-size: 18px;
+      padding-right: 5px;
+    }
+    .error {
+      color: #f50;
+      font-size: 18px;
+      padding-right: 5px;
+    }
+    .warn {
+      color: #fa0;
+      font-size: 18px;
+      padding-right: 5px;
+    }
+  }
+}
