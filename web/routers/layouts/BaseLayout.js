@@ -161,7 +161,7 @@ export default class BaseLayout extends React.Component {
         return (
             <ReactDocumentTitle title={title}>
                 <div className={styles.baseLayout}>
-                    <Header />
+                    <Header/>
                     <div className={styles.container}>
                         <div className={styles.leftMenu}>
                             {this.renderOneMenu(this.state.menuConfig)}

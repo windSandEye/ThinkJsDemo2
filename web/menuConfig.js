@@ -10,7 +10,7 @@ const menuConfig = [
             },
             {
                 name: '供应商管理',
-                path: 'supplier',
+                path: 'suppliers',
                 icon: 'suppliermenu'
             }
         ]
@@ -21,7 +21,7 @@ const menuConfig = [
         children: [
             {
                 name: '商品管理',
-                path: 'commodity',
+                path: 'commoditys',
                 icon: 'commoditymenu'
             },
             {

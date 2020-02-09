@@ -29,7 +29,7 @@ export default class HomePage extends React.Component {
         return (
             <ReactDocumentTitle title="首页">
                 <div className={styles.homeLayout}>
-                    <Header />
+                    <Header/>
                     <div className={styles.homeIndex}>
                         <div className={styles.container}>
                             <div className={styles.menuLeft}>

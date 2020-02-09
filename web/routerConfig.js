@@ -36,78 +36,106 @@ module.exports = [
                     },
                     {
                         name: '供应商管理',
-                        path: 'supplier',
+                        path: 'suppliers',
+                        model: ['suppliers'],
+                        component: () => import('./routers/suppliers/Suppliers'),
+                        children:[
+                            {
+                                name: '新增客户',
+                                path: 'createPage',
+                                model: ['suppliers'],
+                                component: () => import('./routers/suppliers/detail/SupplierDetail'),
+                            },
+                            {
+                                name: '客户详情',
+                                path: 'detailPage',
+                                model: ['suppliers'],
+                                component: () => import('./routers/suppliers/detail/SupplierDetail'),
+                            },
+                        ]   
+                    }
+                ]
+            },
+            {
+                name: '商品',
+                path: 'baseInfo',
+                children: [
+                    {
+                        name: '商品管理',
+                        path: 'commoditys',
+                        model: ['commoditys'],
+                        component: () => import('./routers/commoditys/Commoditys'),
+                        children:[
+                            {
+                                name: '添加商品',
+                                path: 'createPage',
+                                model: ['customers'],
+                                component: () => import('./routers/customers/detail/CustomerDetail'),
+                            },
+                            {
+                                name: '商品详情',
+                                path: 'detailPage',
+                                model: ['customers'],
+                                component: () => import('./routers/customers/detail/CustomerDetail'),
+                            },
+                        ]   
+                    },
+                    {
+                        name: '仓库管理',
+                        path: 'warehouse',
                         model: ['home'],
                         component: () => import('./routers/home/HomePage'),
                     }
                 ]
             },
-            // {
-            //     name: '商品',
-            //     path: 'baseInfo',
-            //     children: [
-            //         {
-            //             name: '商品管理',
-            //             path: 'commodity',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         },
-            //         {
-            //             name: '仓库管理',
-            //             path: 'warehouse',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         }
-            //     ]
-            // },
-            // {
-            //     name: '进销存',
-            //     path: 'pss',
-            //     children: [
-            //         {
-            //             name: '采购',
-            //             path: 'purchase',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         },
-            //         {
-            //             name: '销售',
-            //             path: 'sale',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         },
-            //         {
-            //             name: '库存',
-            //             path: 'inventory',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         }
-            //     ]
-            // },
-            // {
-            //     name: '报表',
-            //     path: 'statement',
-            //     children: [
-            //         {
-            //             name: '入库统计',
-            //             path: 'customers',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         },
-            //         {
-            //             name: '出库统计',
-            //             path: 'supplier',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         },
-            //         {
-            //             name: '仓库统计',
-            //             path: 'warehouse',
-            //             model: ['home'],
-            //             component: () => import('./routers/home/HomePage'),
-            //         }
-            //     ]
-            // }
+            {
+                name: '进销存',
+                path: 'pss',
+                children: [
+                    {
+                        name: '采购',
+                        path: 'purchase',
+                        model: ['home'],
+                        component: () => import('./routers/home/HomePage'),
+                    },
+                    {
+                        name: '销售',
+                        path: 'sale',
+                        model: ['home'],
+                        component: () => import('./routers/home/HomePage'),
+                    },
+                    {
+                        name: '库存',
+                        path: 'inventory',
+                        model: ['home'],
+                        component: () => import('./routers/home/HomePage'),
+                    }
+                ]
+            },
+            {
+                name: '报表',
+                path: 'statement',
+                children: [
+                    {
+                        name: '入库统计',
+                        path: 'customers',
+                        model: ['home'],
+                        component: () => import('./routers/home/HomePage'),
+                    },
+                    {
+                        name: '出库统计',
+                        path: 'supplier',
+                        model: ['home'],
+                        component: () => import('./routers/home/HomePage'),
+                    },
+                    {
+                        name: '仓库统计',
+                        path: 'warehouse',
+                        model: ['home'],
+                        component: () => import('./routers/home/HomePage'),
+                    }
+                ]
+            }
         ]
     }
 ]

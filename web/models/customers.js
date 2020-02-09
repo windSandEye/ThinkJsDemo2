@@ -1,7 +1,7 @@
 import { sendQequest } from './apiClicent';
 import { routerRedux } from 'dva/router';
 import {message} from '../routers/common/FormComponent/index';
-import CreateCustomerDto from '../../src/dto/customers/CreateCustomDto';
+// import CreateCustomerDto from '../../src/dto/customers/CreateCustomDto';
 
 
 const tableInit = {
@@ -12,7 +12,7 @@ const tableInit = {
     data: []
 }
 
-const comtomerInit = {
+const customerInit = {
     address: null,
     company: null,
     department: null,
@@ -30,7 +30,7 @@ export default {
             { value: 1, title: '客户列表', url: 'business/customers' },
             { value: 2, title: '新增客户', url: 'business/customers/createPage' }
         ],
-        customerDetail: Object.assign({}, comtomerInit),
+        customerDetail: Object.assign({}, customerInit),
     },
 
     effects: {
@@ -140,7 +140,7 @@ export default {
             return { ...state, customerDetail: action.customerDetail }
         },
         resetCustomer(state, action) {
-            return { ...state, customerDetail: Object.assign({}, comtomerInit) }
+            return { ...state, customerDetail: Object.assign({}, customerInit) }
         }
     }
 };

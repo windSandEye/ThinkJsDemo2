@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import FontAwesome from 'react-fontawesome';
-import Pagination from '../../common/pagination/Pagination';
+import Pagination from '../../common/Pagination/Pagination';
 import utils from '../../../utils/utils'
 import styles from './CustomerList.less';
 

@@ -73,7 +73,7 @@ module.exports = {
             __SSR__: JSON.stringify(true)
         }),
         //启动热替换功能
-        //  new webpack.HotModuleReplacementPlugin()
+        // new webpack.HotModuleReplacementPlugin()
 
     ]
 }

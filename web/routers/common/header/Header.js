@@ -1,4 +1,5 @@
 import React from 'react';
+import { routerRedux } from 'dva/router';
 import styles from './Header.less';
 
 export default class Header extends React.Component {
@@ -12,11 +13,17 @@ export default class Header extends React.Component {
 
     }
 
+    //返回主页
+    returnHomePage() {
+        let url = window.location.origin;
+        window.location.href = url;
+    }
+
 
     render() {
         return (
             <div className={styles.header}>
-                <div className={styles.leftPart}>
+                <div className={styles.leftPart} onClick={this.returnHomePage.bind(this)}>
                     <a>
                         <img src='/static/img/home.png' className={styles.logoImg} />
                     </a>

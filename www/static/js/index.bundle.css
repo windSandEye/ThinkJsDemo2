@@ -158,6 +158,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 .Header_header-1Lw3q .Header_leftPart-FQowX .Header_logoImg-1Xs0u {
   padding: 0 10px;
@@ -243,158 +244,6 @@ body {
 .BodyHeader_bodyHeader-1I0V8 .BodyHeader_headerTitle-SOYqy .BodyHeader_dropDown-3vanN .BodyHeader_downItem-A3eGK:hover {
   background-color: #3ffd89;
 }
-.Pagination_pagination-nchyE {
-  position: fixed;
-  display: flex;
-  background-color: #ffffff;
-  bottom: 0;
-  padding: 10px 15px;
-  width: calc(100% - 256px);
-  flex-direction: row-reverse;
-  z-index: 10;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC {
-  padding: 5px 20px;
-  align-items: center;
-  display: flex;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_pageNum-1qTgD {
-  padding: 2px 8px;
-  border: 1px solid #b5dbe0;
-  border-radius: 5px;
-  margin: 0 5px;
-  color: #333;
-  text-decoration: none;
-  cursor: pointer;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_pageNum-1qTgD:hover {
-  color: #887cff;
-  border: 1px solid #887cff;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_pageMore-3vqpa {
-  font-weight: 700;
-  color: #dcc0c0;
-  text-decoration: none;
-  padding: 2px 8px;
-  cursor: pointer;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_pageMore-3vqpa:hover {
-  color: #887cff;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_activePage-1Mk32 {
-  color: #887cff;
-  border: 1px solid #887cff;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_changePageIcon-D5CaK {
-  font-size: 2.1rem;
-  padding: 1px 8px;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_noPage-2YFZU {
-  color: #dcdcdc;
-}
-.Pagination_pagination-nchyE .Pagination_pageShow-3igAC .Pagination_count-Jnm6d {
-  margin-left: 30px;
-}
-.CustomerList_cardTable-Ph2y- {
-  position: relative;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 15px;
-  margin: 0 auto;
-  max-width: 100%;
-  position: relative;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk {
-  padding: 15px 45px 15px 50px;
-  background-color: #ffffff;
-  background-image: url(/static/img/card-template.jpg);
-  width: 350px;
-  height: 200px;
-  background-size: 350px;
-  line-height: 2;
-  font-size: 1.5rem;
-  margin: 15px;
-  position: relative;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk:hover {
-  border: 2px solid #ffffff;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_name-3yepm {
-  font-size: 2rem;
-  font-weight: 700;
-  font-style: italic;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_name-3yepm .CustomerList_department-2MiyJ {
-  padding-left: 10px;
-  font-size: 1.5rem;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_company-U1Aql {
-  font-size: 1.8rem;
-  color: #864104;
-  font-weight: 700;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_checkboxIcon-1tgWR {
-  position: absolute;
-  left: 15px;
-  top: 5px;
-  display: none;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_checkboxIcon-1tgWR .CustomerList_checkIcon-sUCiu {
-  color: #089200;
-  font-size: 2rem;
-}
-.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_checkItem-3s_wA {
-  box-shadow: 0 0 4px 4px #a98888;
-}
-.Checkbox_groupInline-Jt-FK {
-  display: flex;
-  flex-direction: row;
-}
-.Checkbox_groupBlock-UwO6d {
-  display: flex;
-  flex-direction: column;
-}
-.Checkbox_groupBlock-UwO6d .Checkbox_checkbox-1zlOy {
-  padding-bottom: 10px;
-}
-.Checkbox_checkbox-1zlOy {
-  display: flex;
-  align-items: center;
-  padding-right: 15px;
-}
-.Checkbox_checkbox-1zlOy .Checkbox_checkboxBtn-1FARF {
-  font-size: 20px;
-  color: #7a7aff;
-}
-.Checkbox_checkbox-1zlOy .Checkbox_checkboxLabel-COxxv {
-  margin-left: 5px;
-}
-.Radio_groupInline-becbi {
-  display: flex;
-  flex-direction: row;
-}
-.Radio_groupBlock-26SSK {
-  display: flex;
-  flex-direction: column;
-}
-.Radio_groupBlock-26SSK .Radio_radio-1hQWI {
-  padding-bottom: 10px;
-}
-.Radio_radio-1hQWI {
-  display: flex;
-  align-items: center;
-  padding-right: 15px;
-}
-.Radio_radio-1hQWI .Radio_radioBtn-2TdRK {
-  font-size: 20px;
-  color: #7a7aff;
-}
-.Radio_radio-1hQWI .Radio_radioLabel-2PWtK {
-  margin-left: 5px;
-}
 .Pagination_pagination-2I7im {
   position: fixed;
   display: flex;
@@ -447,144 +296,61 @@ body {
 .Pagination_pagination-2I7im .Pagination_pageShow-2SXFl .Pagination_count-1yRJN {
   margin-left: 30px;
 }
-.Select_select-2NkLX {
+.CustomerList_cardTable-Ph2y- {
   position: relative;
 }
-.Select_select-2NkLX .Select_selectInput-Cwd3R {
-  width: 100%;
-  height: 34px;
-  padding: 6px 30px 6px 12px;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.Select_select-2NkLX .Select_selectInput-Cwd3R:focus {
-  border-color: #66afe9;
-  outline: 0;
-}
-.Select_select-2NkLX .Select_selectOptions-2EET6 {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  border: 1px solid #ccc;
-  border-radius: 0 0 5px 5px;
-  width: 100%;
-  background-color: #ffffff;
-  margin-top: 1px;
-  z-index: 10;
-  max-height: 250px;
-  overflow: auto;
-  margin-bottom: 10px;
-}
-.Select_select-2NkLX .Select_selectOptions-2EET6 li {
-  padding: 5px;
-}
-.Select_select-2NkLX .Select_selectOptions-2EET6 li:hover {
-  background-color: #b7f6ff;
-}
-.Select_select-2NkLX .Select_selectOptions-2EET6 .Select_active-2qKjY {
-  background-color: #f1f1f1;
-}
-.Select_select-2NkLX .Select_caret-2D9pB {
-  position: absolute;
-  right: 1px;
-  font-size: 20px;
-  color: #e68a8a;
-  padding: 7px;
-}
-.message_messageContainer-2OMUF {
-  position: fixed;
-  top: 50px;
-  max-width: 400px;
-  width: 500px;
-  background: #ffffff;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding: 15px;
   margin: 0 auto;
-  border: 1px solid #f9dfdf;
-  border-radius: 5px;
-  left: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  width: auto;
-  transform: translateX(-50%);
-  z-index: 10;
-  animation-name: message_message-MBhRR;
+  max-width: 100%;
+  position: relative;
 }
-@keyframes message_message-MBhRR {
-  0% {
-    top: -50px;
-    opacity: 1;
-  }
-  10% {
-    top: 50px;
-    opacity: 1;
-  }
-  80% {
-    top: 50px;
-    opacity: 1;
-  }
-  100% {
-    top: -50px;
-    opacity: 0;
-  }
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk {
+  padding: 15px 45px 15px 50px;
+  background-color: #ffffff;
+  background-image: url(/static/img/customs-background.jpeg);
+  width: 350px;
+  height: 200px;
+  background-size: 350px;
+  line-height: 2;
+  font-size: 1.3rem;
+  margin: 15px;
+  position: relative;
 }
-.message_messageContainer-2OMUF .message_content-2E8kd {
-  display: flex;
-  align-items: center;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk:hover {
+  border: 2px solid #ffffff;
+  box-shadow: 2px 2px #d4d4d4;
 }
-.message_messageContainer-2OMUF .message_content-2E8kd p {
-  margin: 0;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_name-3yepm {
+  font-size: 2rem;
+  font-weight: 700;
 }
-.message_messageContainer-2OMUF .message_content-2E8kd .message_info-Ft17W {
-  color: #81b509;
-  font-size: 18px;
-  padding-right: 5px;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_name-3yepm .CustomerList_department-2MiyJ {
+  padding-left: 10px;
+  font-size: 1.4rem;
+  font-family: cursive;
+  color: #4e77ab;
 }
-.message_messageContainer-2OMUF .message_content-2E8kd .message_success-1nXMw {
-  color: #87d068;
-  font-size: 18px;
-  padding-right: 5px;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_company-U1Aql {
+  font-size: 1.8rem;
+  color: #864104;
+  font-weight: 700;
 }
-.message_messageContainer-2OMUF .message_content-2E8kd .message_error-8Eq_S {
-  color: #f50;
-  font-size: 18px;
-  padding-right: 5px;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_checkboxIcon-1tgWR {
+  position: absolute;
+  left: 15px;
+  top: 5px;
+  display: none;
 }
-.message_messageContainer-2OMUF .message_content-2E8kd .message_warn-2zjH7 {
-  color: #fa0;
-  font-size: 18px;
-  padding-right: 5px;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_listItem-25Bsk .CustomerList_checkboxIcon-1tgWR .CustomerList_checkIcon-sUCiu {
+  color: #089200;
+  font-size: 2rem;
 }
-.CustomerDetail_cardBody-2hAzE {
-  min-height: 100%;
-}
-.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK {
-  min-height: calc(100vh - 110px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w {
-  background-image: url(/static/img/card-template.jpg);
-  background-repeat: no-repeat;
-  width: 900px;
-  height: 500px;
-  background-size: 900px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w .CustomerDetail_formCard-2ksUs {
-  padding: 10px 150px;
-}
-.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w .CustomerDetail_formCard-2ksUs .CustomerDetail_submitBtn-1bhXi {
-  text-align: center;
-  padding-top: 15px;
-}
-.CustomerDetail_cardBody-2hAzE .CustomerDetail_detailBody-2VGRK .CustomerDetail_detailCard-1f_4w .CustomerDetail_formCard-2ksUs .CustomerDetail_submitBtn-1bhXi .CustomerDetail_btnPadding-1rtXK {
-  padding: 6px 20px;
+.CustomerList_cardTable-Ph2y- .CustomerList_cardList-24Jov .CustomerList_checkItem-3s_wA {
+  box-shadow: 0 0 4px 4px #a98888;
 }
 .Customers_contianer-3btq4 .Customers_bodyContent-SZtl8 {
   width: 100%;
@@ -640,7 +406,7 @@ body {
 }
 .BaseLayout_baseLayout-1zlu- {
   min-height: 100vh;
-  background-color: #C7DDE0;
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   min-width: 1172px;

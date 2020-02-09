@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch, routerRedux, IndexRoute } from 'dva/router';
-import browserHistory from 'history/createBrowserHistory';
+// import browserHistory from 'history/createBrowserHistory';
 import RouterConfig from './routerConfig';
 import dynamic from 'dva/dynamic';
 import HomePage from './routers/home/HomePage';

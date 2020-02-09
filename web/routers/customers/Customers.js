@@ -5,7 +5,6 @@ import FontAwesome from 'react-fontawesome';
 import BodyHeader from '../common/bodyHeader/BodyHeader';
 import { Modal, Button, FormControl } from 'react-bootstrap';
 import CustomerList from './list/CustomerList';
-import CustomerDetail from './detail/CustomerDetail';
 
 
 import styles from './Customers.less';
@@ -33,14 +32,17 @@ export default class Customers extends React.Component {
     //删除
     deleteCustomer() {
         if (this.state.showCheckbox) {
-            this.props.dispatch({
-                type: 'customers/deleteCustomer',
-                param: {
-                    idList: this.customerRef.getCheckItem(),
-                    pageNum: this.props.customers.customerList.currentPage,
-                    keyword: this.state.search
-                }
-            })
+            let idList = this.customerRef.getCheckItem();
+            if (idList && idList.length > 0) {
+                this.props.dispatch({
+                    type: 'customers/deleteCustomer',
+                    param: {
+                        idList: idList,
+                        pageNum: this.props.customers.customerList.currentPage,
+                        keyword: this.state.search
+                    }
+                })
+            }
         }
         this.setState({
             showCheckbox: !this.state.showCheckbox
@@ -50,7 +52,10 @@ export default class Customers extends React.Component {
     //刷新
     refreshCustomer() {
         this.props.dispatch({
-            type: 'customers/findAll'
+            type: 'customers/findAll',
+            param: {
+                keyword: this.state.search
+            }
         })
     }
 
